@@ -22,12 +22,15 @@ public class TestBase {
     }
 
     public boolean isElementPresent(By locator){
-        return wd.findElements(locator).size()>0);
+        return wd.findElements(locator).size()>0;
     }
 
     public boolean isFindCarFormPresent(){
-        return isElementPresent(By.cssSelector(".Main_mainpage__find_your_car__AHLkw form"));
+        return isElementPresent2(By.cssSelector(".Main_mainpage__find_your_car__AHLkw form"));
+    }
 
+    public boolean isFindCarFormPresent2(){
+        return isElementPresent2(By.cssSelector(".Main_mainpage__find_your_car__AHLkw form"));
     }
 
     public boolean isElementPresent2(By by){
@@ -43,13 +46,4 @@ public class TestBase {
     public void teardown(){
         wd.quit();
     }
-
-    public boolean isFindCarFormPresent2(){
-    try{
-        wd.findElements(By.cssSelector(".Main_mainpage__find_your_car__AHLkw form"))
-        return true;
-    } catch (NoSuchElementException ex){
-        return false;
-    }
-}
 }

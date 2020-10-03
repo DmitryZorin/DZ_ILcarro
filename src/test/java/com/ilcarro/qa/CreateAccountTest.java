@@ -8,17 +8,16 @@ import org.testng.annotations.Test;
 public class CreateAccountTest extends TestBase{
     //preconditions: user should be logged out
     @BeforeMethod
-    public void insurePreconditions(){
-        if(isElementPresent(By.cssSelector("[href='/signup']"))){  //sign up not present
-        wd.findElement(By.xpath("a[contains(., 'logOut')]")).click();
-
-
+    public void ensurePreconditions(){
+        if(!isElementPresent(By.cssSelector("[href='/signup']"))){    //sign up not present
+            wd.findElement(By.xpath("//a[contains(., 'logOut')]")).click(); //click on logout button
         }
+    }
 
         @Test
        public void testSignUp(){
             //click on sign up
-        wd.findElement(By.cssSelector("\"[href='/signup']\"")).click();
+        wd.findElement(By.cssSelector("[href='/signup']")).click();
         Assert.assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
 
             //fill registration form
@@ -50,4 +49,4 @@ public class CreateAccountTest extends TestBase{
 
     //check: login form displayed
 
-}
+
