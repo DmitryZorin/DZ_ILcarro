@@ -11,7 +11,7 @@ public class HeaderTests extends TestBase{
 
     public void ensurePreconditions(){
         if(!isElementPresent(By.cssSelector("[href='/signup']"))){
-            wd.findElement(By.xpath("//a[contains(., 'logOut')]")).click();
+            click(By.xpath("//a[contains(., 'logOut')]"));
         }
     }
 
@@ -19,26 +19,26 @@ public class HeaderTests extends TestBase{
 
     public void testHeader(){
         //Search test
-        wd.findElement(By.cssSelector("header a[href='/search']")).click();
+        click(By.cssSelector("header a[href='/search']"));
         Assert.assertTrue(isElementPresent(By.xpath("//h3[contains(., 'Find your car now!')]")));
         //wd.findElement(By.cssSelector("header [href='/']")).click();
 
         //Let the cat work test
-        wd.findElement(By.cssSelector("header a[href='/car']")).click();
+        click(By.cssSelector("header a[href='/car']"));
         Assert.assertTrue(isElementPresent(By.xpath("//h3[contains(., 'Let the car work')]")));
         //wd.findElement(By.cssSelector("header [href='/']")).click();
 
         //Sign up test
-        wd.findElement(By.cssSelector("[href='/signup']")).click();
+        click(By.cssSelector("[href='/signup']"));
         Assert.assertTrue(isElementPresent(By.xpath("//h2[contains(., 'Registration')]")));
         //wd.findElement(By.cssSelector("header [href='/']")).click();
 
         //Log in test
-        wd.findElement(By.cssSelector("[href='/login']")).click();
+        click(By.cssSelector("[href='/login']"));
         Assert.assertTrue(isElementPresent(By.xpath("//h2[contains(., 'Log in')]")));
 
         //Ilcarro logo test
         Assert.assertTrue(isElementPresent(By.cssSelector("header [href='/']")));
-        wd.findElement(By.cssSelector("header [href='/']")).click();
+        click(By.cssSelector("header [href='/']"));
     }
 }

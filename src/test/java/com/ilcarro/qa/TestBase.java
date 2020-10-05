@@ -46,4 +46,23 @@ public class TestBase {
     public void teardown(){
         wd.quit();
     }
+
+    public boolean isLoginFormPresent() {
+        return isElementPresent(By.cssSelector(".Login_login__right_block__1niYm"));
+    }
+
+    public void type(By locator, String text) {
+        click(locator);
+        wd.findElement(locator).clear();
+        wd.findElement(locator).sendKeys(text);
+    }
+
+    public void click(By locator){
+        wd.findElement(locator).click();
+
+    }
+
+    public void submitForm() {
+        click(By.cssSelector("[type='submit']"));
+    }
 }

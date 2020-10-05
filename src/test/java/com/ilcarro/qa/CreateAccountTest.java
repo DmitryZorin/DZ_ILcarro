@@ -1,52 +1,48 @@
 package com.ilcarro.qa;
 
 import org.openqa.selenium.By;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertTrue;
+
 
 public class CreateAccountTest extends TestBase{
     //preconditions: user should be logged out
     @BeforeMethod
     public void ensurePreconditions(){
         if(!isElementPresent(By.cssSelector("[href='/signup']"))){    //sign up not present
-            wd.findElement(By.xpath("//a[contains(., 'logOut')]")).click(); //click on logout button
+            click(By.xpath("//a[contains(., 'logOut')]"));
         }
     }
 
         @Test
        public void testSignUp(){
             //click on sign up
-        wd.findElement(By.cssSelector("[href='/signup']")).click();
-        Assert.assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
+       click(By.cssSelector("[href='/signup']"));
+        assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
 
             //fill registration form
-        wd.findElement(By.cssSelector("#first_name")).click();
-        wd.findElement(By.cssSelector("#first_name")).clear();
-        wd.findElement(By.cssSelector("#first_name")).sendKeys("Dm");
+            type(By.cssSelector("#first_name"), "Dm");
+            type(By.cssSelector("#second_name"), "Zo");
+            type(By.cssSelector("#email"), "dmzo@dmzo.com");
+            type(By.cssSelector("#password"), "1234567Aa");
 
-        wd.findElement(By.cssSelector("#second_name")).click();
-        wd.findElement(By.cssSelector("#second_name")).clear();
-        wd.findElement(By.cssSelector("#second_name")).sendKeys("Zo");
+            click(By.cssSelector("#check_policy"));
 
-        wd.findElement(By.cssSelector("#email")).click();
-        wd.findElement(By.cssSelector("#email")).clear();
-        wd.findElement(By.cssSelector("#email")).sendKeys("dmzo@dmzo.com");
+            submitForm();
 
-        wd.findElement(By.cssSelector("#password")).click();
-        wd.findElement(By.cssSelector("#password")).clear();
-        wd.findElement(By.cssSelector("#password")).sendKeys("1234567Aa");
-
-        wd.findElement(By.cssSelector("#check_policy")).click();
-
+            //check: login form displayed
+        Assert.assertTrue(isLoginFormPresent());
 
         }
+}
 
-            //click on logout button
-    }
 
-    //click submit button
 
-    //check: login form displayed
+
+
 
 
