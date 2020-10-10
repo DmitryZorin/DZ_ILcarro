@@ -19,18 +19,21 @@ public class CreateAccountTest extends TestBase{
     }
 
         @Test
-       public void testSignUp(){
+       public void testSignUp() throws InterruptedException {
             //click on sign up
        click(By.cssSelector("[href='/signup']"));
         assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
 
             //fill registration form
-            type(By.cssSelector("#first_name"), "Dm");
-            type(By.cssSelector("#second_name"), "Zo");
-            type(By.cssSelector("#email"), "dmzo@dmzo.com");
-            type(By.cssSelector("#password"), "1234567Aa");
+            fillRegistrationForm(
+                    new User().withFirstName("Pen")
+                            .withSecondName("Peter")
+                            .withEmail("pp@pp.com")
+                            .withPassword("Peterpen1"));
 
             click(By.cssSelector("#check_policy"));
+
+            pause(2000);
 
             submitForm();
 
@@ -38,6 +41,17 @@ public class CreateAccountTest extends TestBase{
         Assert.assertTrue(isLoginFormPresent());
 
         }
+
+    public void pause(int millis) throws InterruptedException {
+        Thread.sleep(millis);
+    }
+
+    public void fillRegistrationForm(User user) {
+        type(By.cssSelector("#first_name"), user.getFirstName());
+        type(By.cssSelector("#second_name"), user.getSecondName());
+        type(By.cssSelector("#email"), user.getEmail());
+        type(By.cssSelector("#password"), user.getPassword());
+    }
 }
 
 
