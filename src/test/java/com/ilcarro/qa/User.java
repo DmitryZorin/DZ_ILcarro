@@ -26,12 +26,12 @@ public class User {
         return this;
     }
 
-    public String getSecondName() {
-        return secondName;
-    }
-
     public String getFirstName() {
         return firstName;
+    }
+
+    public String getSecondName() {
+        return secondName;
     }
 
     public String getEmail() {
