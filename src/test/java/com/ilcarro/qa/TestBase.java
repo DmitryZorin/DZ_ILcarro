@@ -39,7 +39,6 @@ public class TestBase {
         return isElementPresent(By.cssSelector(".Login_login__right_block__1niYm"));
     }
 
-
     public boolean isElementPresent(By locator){
         return wd.findElements(locator).size()>0;
     }
@@ -83,7 +82,7 @@ public class TestBase {
     }
 
     public void logIn() {
-        fillLoginForm(new User().withEmail("aa@bb109.com").withPassword("1Aaaaaaaa"));
+        fillLoginForm(new User().withEmail("pp@pp.com").withPassword("Peterpen1"));
         submitForm();
     }
     public String getEmailTextFromHeader() {
